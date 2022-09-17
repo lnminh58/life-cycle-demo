@@ -16,7 +16,7 @@ const HookItem = ({onPress, number}) => {
 };
 
 // export default HookItem;
-
+//
 export default React.memo(HookItem);
 
 // export default React.memo(HookItem, (prevProps, nextProps) => {

@@ -13,7 +13,7 @@ const HookList = () => {
     setData(data => [...data, last(data) + 1]);
   };
 
-  const onPressItem = item => alert(item);
+  // const onPressItem = item => alert(item);
   // const onPressItem = useCallback(item => alert(item), []);
 
   return (
@@ -22,7 +22,8 @@ const HookList = () => {
       <FlatList
         data={data}
         renderItem={({item}) => (
-          <HookItem number={item} onPress={onPressItem} />
+          // <HookItem number={item} onPress={onPressItem} />
+          <HookItem number={item} />
         )}
         keyExtractor={item => item.toString()}
       />
