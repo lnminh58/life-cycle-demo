@@ -1,23 +1,22 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 
 import styles from './styles';
 
-export default class ComponentList extends Component {
-  state = {};
+export default class ComponentItem extends Component {
+  // shouldComponentUpdate = nextProps => {
+  //   const {number} = this.props;
+  //   return nextProps.number !== number;
+  // };
+
   render() {
+    const {onPress, number} = this.props;
+    console.log('Component Item: ', number);
+
     return (
-      <View style={styles.container}>
-        <Text>Component Item</Text>
-      </View>
+      <TouchableOpacity onPress={onPress} style={styles.itemContainer}>
+        <Text style={styles.text}>{number}</Text>
+      </TouchableOpacity>
     );
   }
 }

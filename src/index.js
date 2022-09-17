@@ -1,14 +1,5 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
+import {SafeAreaView} from 'react-native';
 
 import NavigationContainer from './routes';
 
@@ -17,9 +8,12 @@ export default class App extends Component {
   state = {};
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <NavigationContainer />;
-      </SafeAreaView>
+      <>
+        <SafeAreaView style={[styles.container, {backgroundColor: '#353b48'}]}>
+          <NavigationContainer />
+        </SafeAreaView>
+        <SafeAreaView style={{backgroundColor: '#f5f6fa'}} />
+      </>
     );
   }
 }

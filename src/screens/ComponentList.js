@@ -1,22 +1,41 @@
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Text, View, FlatList} from 'react-native';
+import {last} from 'lodash';
 
+import Button from '../components/Button';
+import ComponentItem from '../components/ComponentItem';
 import styles from './styles';
 
 export default class ComponentList extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+
+    this.state = {data: [1]};
+  }
+  onPressItem = item => () => {
+    alert(item);
+  };
+
+  renderItem = ({item}) => {
+    return <ComponentItem number={item} onPress={this.onPressItem(item)} />;
+  };
+
+  addItem = () => {
+    const {data} = this.state;
+    const newData = [...data, last(data) + 1];
+    this.setState({data: newData});
+  };
+
   render() {
+    const {data} = this.state;
     return (
       <View style={styles.container}>
-        <Text>Class Component List</Text>
+        <Button text="add" onPress={this.addItem} />
+        <FlatList
+          data={data}
+          renderItem={this.renderItem}
+          keyExtractor={item => item.toString()}
+        />
       </View>
     );
   }
